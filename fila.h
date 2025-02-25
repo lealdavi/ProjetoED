@@ -3,25 +3,21 @@
 
 typedef int T;
 
-struct node {
-    T data;
-    struct node *proximo;
-};
-typedef struct node Node;
-
 typedef struct {
-    Node *inicio, *fim;
-    int qntd, max;
+    int inicio, fim;   
+    int qntd, max;   
+    T *vetor;   
 } Fila;
 
 Fila* inicializar (int max);
-void destruir (Fila* f);
 int vazia (Fila *f);
 int cheia (Fila *f);
-int inserirFim (Fila *f, int num);
-int removerInicio (Fila *f);
-int quantidade (Fila *f);
-int primeiroElemento (Fila *f);
-void imprimirFila (Fila *f);
+void destruir (Fila *f);
+int inserir (Fila *f, T dado);
+int remover (Fila *f);
+T primeiroElemento(Fila *f);
+T ultimoElemento(Fila *f);
+int quantidade (Fila* f);
+void imprimirFila(Fila* f);
 
 #endif
