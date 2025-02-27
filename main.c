@@ -68,6 +68,7 @@ void listar_historico(Lista *historico, void(*imprimirDados));
  * @param p Ponteiro para o pedido a ser impresso.
  */
 void imprimirDados(void *p);
+void imprimirIterador(Lista *historico);
 
 /**
  * @brief Função principal do programa.
@@ -140,7 +141,8 @@ void selecionar_operacao(Fila *fila, Lista *historico, Pedido *pedido, void(*imp
             listar_espera(fila, imprimirDados);
             break;
         case 4:
-            listar_historico(historico, imprimirDados);
+            imprimirIterador(historico);
+            // listar_historico(historico, imprimirDados);
             break;
         case 5:
             fila_destruir(fila);
@@ -230,6 +232,7 @@ void preparar_pedido(Fila *fila, Lista *historico)
         Pedido pedido_preparado = (Pedido)fila_primeiroElemento(fila);
         remover(fila);
         printf("Pedido %d da mesa %d, cliente %s preparado\n", pedido_preparado->id + 1, pedido_preparado->mesa, pedido_preparado->cliente);
+        // free(pedido_preparado);
         
         if (!inserirInicio(historico, pedido_preparado))
         {
@@ -298,4 +301,15 @@ void imprimirDados(void *p)
     Pedido pedido = (Pedido)p;
 
     printf("| %-*s | R$%-*d | %-*s | %-*d |\n", 20, cardapio[pedido->id], 10, pedido->preco, 30, pedido->cliente, 10, pedido->mesa);
+}
+
+void imprimirIterador(Lista *historico)
+{
+    iterador it = primeiro(historico);
+    while (!acabou(it))
+    {
+        Pedido pedido = (Pedido)elemento(it);
+        printf("| %-*s | R$%-*d | %-*s | %-*d |\n", 20, cardapio[pedido->id], 10, pedido->preco, 30, pedido->cliente, 10, pedido->mesa);
+        proximo(&it);
+    }
 }

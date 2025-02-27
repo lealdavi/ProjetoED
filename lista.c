@@ -226,6 +226,46 @@ int lista_quantidade(Lista *l)
     return l->qntd;
 }
 
+// funções para iterador
+iterador primeiro(Lista *l)
+{
+    iterador i;
+    i.posicao = l->sentinela->proximo;
+    i.estrutura = l;
+    return i;
+}
+iterador ultimo(Lista *l)
+{
+    iterador i;
+    i.posicao = l->sentinela->anterior;
+    i.estrutura = l;
+    return i;
+}
+void proximo(iterador *i)
+{
+    if (!acabou(*i))
+        i->posicao = i->posicao->proximo;
+}
+
+void anterior(iterador *i)
+{
+    if (!acabou(*i))
+        i->posicao = i->posicao->anterior;
+}
+
+T elemento(iterador i)
+{
+    if (!acabou(i))
+        return i.posicao->dado;
+}
+
+int acabou(iterador i)
+{
+    return (i.posicao == i.estrutura->sentinela);
+}
+
+// imprime a lista na tela
+
 /**
  * @brief Imprime os elementos da lista.
  * 
@@ -236,6 +276,7 @@ int lista_quantidade(Lista *l)
  * @param l Ponteiro para a lista.
  * @param print Ponteiro para a função de impressão que aceita um argumento do tipo T.
  */
+
 void imprimirLista(Lista *l, void (*print)(T))
 {
     Node *n = l->sentinela->proximo;

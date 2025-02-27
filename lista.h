@@ -37,6 +37,12 @@ typedef struct
     int qntd, max;
 } Lista;
 
+typedef struct
+{
+    struct node *posicao;
+    Lista *estrutura;
+} iterador;
+
 /**
  * @brief Inicializa uma nova lista com um limite máximo de elementos.
  * 
@@ -45,6 +51,7 @@ typedef struct
  * @param max Limite máximo de elementos que a lista pode armazenar.
  * @return Lista* Ponteiro para a lista inicializada.
  */
+
 Lista *lista_inicializar(int max);
 
 /**
@@ -161,6 +168,13 @@ T lista_ultimoElemento(Lista *l);
  * @return int A quantidade de elementos na lista.
  */
 int lista_quantidade(Lista *l);
+iterador primeiro(Lista *l);
+iterador ultimo(Lista *l);
+void proximo(iterador *i);
+void anterior(iterador *i);
+T elemento(iterador i);
+int acabou(iterador i);
+
 
 /**
  * @brief Imprime os elementos da lista.
