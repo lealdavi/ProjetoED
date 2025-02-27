@@ -88,6 +88,11 @@ int main()
     fila = fila_inicializar(TAM);
     historico = lista_inicializar(TAM);
 
+    printf("\n");
+    printf("Bem-vindo ao ARRAY GOURMET, uma experiência de sabor indexada!");
+    printf("\n");
+    printf("Esse sistema oferece uma administração eficiente de pedidos, garantindo agilidade e qualidade em cada prato");
+    printf("\n");
     selecionar_operacao(fila, historico, &pedido, imprimirDados); // Chama a função para selecionar operações.
 
     free(pedido); // Libera a memória do pedido.
@@ -114,12 +119,12 @@ void selecionar_operacao(Fila *fila, Lista *historico, Pedido *pedido, void(*imp
     while (opcao != 5)
     {
         printf("\n");
-        printf("Selecione uma operação:\n");
+        printf("Selecione a operação desejada:\n");
         printf("1 - Adicionar pedido\n");
         printf("2 - Preparar pedido\n");
         printf("3 - Listar pedidos em espera\n");
-        printf("4 - Listar histórico\n");
-        printf("5 - Sair\n");
+        printf("4 - Listar histórico de pedidos concluídos\n");
+        printf("5 - Finalizar operação\n");
         printf("\n");
         scanf("%d", &opcao);
 
@@ -164,24 +169,24 @@ void adicionar_pedido(Fila *fila)
     char cliente[CHAR_SIZE];
 
     printf("\n");
-    printf("Cardápio:\n");
-    printf("01 - X-Bacon\n");
-    printf("02 - X-Burger\n");
-    printf("03 - X-Egg\n");
-    printf("04 - X-Tudo\n");
-    printf("05 - Coca-Cola 1L\n");
-    printf("06 - Fanta 1L\n");
-    printf("07 - Soda 1L\n");
-    printf("08 - Água 500ml\n");
-    printf("09 - Batata Frita\n");
-    printf("10 - Onion Rings\n");
+    printf("Cardápio - ARRAY GOURMET :\n");
+    printf("01 - Creme Brûlée ----------------------------- R$50,00\n");
+    printf("02 - Risoto de Aspargos e Limão Siciliano ----- R$110,00\n");
+    printf("03 - Ravioli de Lagosta ----------------------- R$200,00\n");
+    printf("04 - Tartare de Salmão ------------------------ R$70,00\n");
+    printf("05 - Filet Mignon ao Molho Béarnaise ---------- R$250,00\n");
+    printf("06 - Trufas Negras ---------------------------- R$1050,00\n");
+    printf("07 - Caviar ----------------------------------- R$600,00\n");
+    printf("08 - Champagne Cristal 750ml ------------------ R$1500,00\n");
+    printf("09 - Martini Dry 750ml ------------------------ R$150,00\n");
+    printf("10 - Cognac Louis XIII 700ml ------------------ R$1500,00\n");
     printf("\n");
 
     printf("Digite o ID do pedido: ");
     scanf("%d", &id);
     printf("Digite o número da mesa: ");
     scanf("%d", &mesa);
-    printf("Digite o nome do cliente: ");
+    printf("Digite o nome do(a) cliente: ");
 
     scanf(" %[^\n]", cliente);
 
@@ -207,6 +212,17 @@ void adicionar_pedido(Fila *fila)
     
 }
 
+/**
+ * @brief Prepara o primeiro pedido na fila.
+ * 
+ * Esta função verifica se há pedidos na fila. Se houver, o primeiro pedido é retirado da fila,
+ * e uma mensagem de confirmação é exibida, incluindo o ID do pedido, o número da mesa e o nome
+ * do cliente. Em seguida, o pedido preparado é adicionado ao histórico. Se a inserção no histórico
+ * falhar, a memória alocada para o pedido é liberada.
+ * 
+ * @param fila Ponteiro para a fila de pedidos a partir da qual o pedido será preparado.
+ * @param historico Ponteiro para a lista que armazenará o histórico dos pedidos preparados.
+ */
 void preparar_pedido(Fila *fila, Lista *historico)
 {
     if (!fila_vazia(fila))
@@ -225,7 +241,16 @@ void preparar_pedido(Fila *fila, Lista *historico)
         printf("Não há pedidos em espera\n");
 }
 
-// por ordem de pedido
+/**
+ * @brief Lista os pedidos em espera na fila.
+ * 
+ * Esta função verifica se há pedidos na fila. Se a fila não estiver vazia, ela exibe os pedidos
+ * em espera, formatando a saída em uma tabela com colunas para o ID do pedido, preço, nome do cliente
+ * e número da mesa. A função utiliza um ponteiro para uma função de impressão para exibir os dados de cada pedido.
+ * 
+ * @param fila Ponteiro para a fila de pedidos que contém os pedidos em espera.
+ * @param imprimirDados Ponteiro para a função que será utilizada para imprimir os dados dos pedidos.
+ */
 void listar_espera(Fila *fila, void(*imprimirDados))
 {
     if (fila_vazia(fila))
@@ -238,7 +263,16 @@ void listar_espera(Fila *fila, void(*imprimirDados))
     imprimirFila(fila, imprimirDados);
 }
 
-// do mais recente para o mais antigo
+/**
+ * @brief Lista os pedidos do histórico.
+ * 
+ * Esta função verifica se há pedidos no histórico. Se o histórico não estiver vazio, ela exibe os pedidos
+ * do histórico, formatando a saída em uma tabela com colunas para o ID do pedido, preço, nome do cliente
+ * e número da mesa. A função utiliza um ponteiro para uma função de impressão para exibir os dados de cada pedido.
+ * 
+ * @param historico Ponteiro para a lista que contém os pedidos do histórico.
+ * @param imprimirDados Ponteiro para a função que será utilizada para imprimir os dados dos pedidos.
+ */
 void listar_historico(Lista *historico, void(*imprimirDados))
 {
     if (lista_vazia(historico))
@@ -251,6 +285,14 @@ void listar_historico(Lista *historico, void(*imprimirDados))
     imprimirLista(historico, imprimirDados);
 }
 
+/**
+ * @brief Imprime os dados de um pedido.
+ * 
+ * Esta função recebe um ponteiro genérico para um pedido e imprime seus dados formatados, incluindo o nome do
+ * pedido (com base no cardápio), o preço, o nome do cliente e o número da mesa.
+ * 
+ * @param p Ponteiro para o pedido a ser impresso.
+ */
 void imprimirDados(void *p)
 {
     Pedido pedido = (Pedido)p;

@@ -46,7 +46,7 @@ typedef struct Pedido *Pedido;
  * 
  * Os preços estão associados à ordem dos itens no cardápio.
  */
-int precos[NUM_ITENS] = {20, 15, 18, 25, 10, 10, 10, 5, 12, 12};
+int precos[NUM_ITENS] = {50, 110, 200, 70, 250, 1050, 600, 1500, 150, 1500};
 
 /**
  * @var cardapio
@@ -54,16 +54,16 @@ int precos[NUM_ITENS] = {20, 15, 18, 25, 10, 10, 10, 5, 12, 12};
  * 
  * Este array contém os nomes de 10 itens que podem ser pedidos pelos clientes.
  */
-char cardapio[NUM_ITENS][20] = {
-    "X-Bacon",
-    "X-Burger",
-    "X-Egg",
-    "X-Tudo",
-    "Coca-Cola 1L",
-    "Fanta 1L",
-    "Soda 1L",
-    "Água 500ml",
-    "Batata Frita",
-    "Onion Rings"};
+char cardapio[NUM_ITENS][100] = {
+    "Creme Brûlée",
+    "Risoto de Aspargos e Limão Siciliano",
+    "Ravioli de Lagosta",
+    "Tartare de Salmão",
+    "Filet Mignon ao Molho Béarnaise",
+    "Trufas Negras",
+    "Caviar",
+    "Champagne Cristal 750ml",
+    "Martini Dry 750ml",
+    "Cognac Louis XIII 700ml"};
 
 #endif
