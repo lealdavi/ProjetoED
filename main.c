@@ -5,31 +5,109 @@
 #include "lista.h"
 #include "utils.h"
 
+/**
+ * @brief Seleciona a operação a ser realizada com base na entrada do usuário.
+ * 
+ * Esta função exibe um menu para o usuário e chama a função apropriada 
+ * com base na escolha do usuário.
+ * 
+ * @param fila Ponteiro para a fila de pedidos.
+ * @param historico Ponteiro para a lista de histórico de pedidos.
+ * @param pedido Ponteiro para um pedido a ser manipulado.
+ * @param imprimirDados Ponteiro para a função que imprime os dados dos pedidos.
+ */
 void selecionar_operacao(Fila *fila, Lista *historico, Pedido *pedido, void(*imprimirDados));
-void adicionar_pedido(Fila *fila, Lista *historico);
+
+/**
+ * @brief Adiciona um novo pedido à fila.
+ * 
+ * Esta função coleta as informações do pedido do usuário e o adiciona
+ * à fila de pedidos.
+ * 
+ * @param fila Ponteiro para a fila de pedidos.
+ */
+void adicionar_pedido(Fila *fila);
+
+/**
+ * @brief Prepara o pedido na fila.
+ * 
+ * Esta função retira um pedido da fila e o adiciona ao histórico de pedidos.
+ * 
+ * @param fila Ponteiro para a fila de pedidos.
+ * @param historico Ponteiro para a lista de histórico de pedidos.
+ */
 void preparar_pedido(Fila *fila, Lista *historico);
+
+/**
+ * @brief Lista os pedidos em espera na fila.
+ * 
+ * Esta função imprime todos os pedidos que estão atualmente na fila de espera.
+ * 
+ * @param fila Ponteiro para a fila de pedidos.
+ * @param imprimirDados Ponteiro para a função que imprime os dados dos pedidos.
+ */
 void listar_espera(Fila *fila, void(*imprimirDados));
+
+/**
+ * @brief Lista o histórico de pedidos.
+ * 
+ * Esta função imprime todos os pedidos que foram processados e armazenados
+ * no histórico.
+ * 
+ * @param historico Ponteiro para a lista de histórico de pedidos.
+ * @param imprimirDados Ponteiro para a função que imprime os dados dos pedidos.
+ */
 void listar_historico(Lista *historico, void(*imprimirDados));
+
+/**
+ * @brief Função que imprime os dados de um pedido.
+ * 
+ * Esta função recebe um ponteiro genérico e imprime as informações do
+ * pedido correspondente.
+ * 
+ * @param p Ponteiro para o pedido a ser impresso.
+ */
 void imprimirDados(void *p);
 
+/**
+ * @brief Função principal do programa.
+ * 
+ * Inicializa a fila e a lista de histórico, aloca memória para um pedido,
+ * e chama a função para selecionar operações com base na interação do usuário.
+ * 
+ * @return int Retorna 0 ao final da execução do programa.
+ */
 int main()
 {
-    Fila *fila;
-    Lista *historico;
+    Fila *fila;                      ///< Ponteiro para a fila de pedidos.
+    Lista *historico;                ///< Ponteiro para a lista de histórico de pedidos.
 
-    Pedido pedido = (Pedido)malloc(sizeof(struct Pedido));
+    Pedido pedido = (Pedido)malloc(sizeof(struct Pedido)); ///< Ponteiro para um pedido.
 
     // Inicializar fila e lista
     fila = fila_inicializar(TAM);
     historico = lista_inicializar(TAM);
 
-    selecionar_operacao(fila, historico, &pedido, imprimirDados);
+    selecionar_operacao(fila, historico, &pedido, imprimirDados); // Chama a função para selecionar operações.
 
-    free(pedido);
+    free(pedido); // Libera a memória do pedido.
 
-    return 0;
+    return 0; // Retorna 0 ao final da execução do programa.
 }
 
+/**
+ * @brief Seleciona a operação a ser realizada pelo usuário.
+ * 
+ * Apresenta um menu de opções para o usuário escolher. Dependendo da escolha,
+ * chama a função correspondente para adicionar um pedido, preparar um pedido,
+ * listar pedidos em espera ou listar o histórico de pedidos. A função também
+ * garante que a fila e o histórico sejam destruídos quando o usuário optar por sair.
+ * 
+ * @param fila Ponteiro para a fila de pedidos.
+ * @param historico Ponteiro para a lista de histórico de pedidos.
+ * @param pedido Ponteiro para um pedido a ser manipulado.
+ * @param imprimirDados Ponteiro para a função que imprime os dados dos pedidos.
+ */
 void selecionar_operacao(Fila *fila, Lista *historico, Pedido *pedido, void(*imprimirDados))
 {
     int opcao = 0;
@@ -40,7 +118,7 @@ void selecionar_operacao(Fila *fila, Lista *historico, Pedido *pedido, void(*imp
         printf("1 - Adicionar pedido\n");
         printf("2 - Preparar pedido\n");
         printf("3 - Listar pedidos em espera\n");
-        printf("4 - Listar histórico de pedidos concluídos\n");
+        printf("4 - Listar histórico\n");
         printf("5 - Sair\n");
         printf("\n");
         scanf("%d", &opcao);
@@ -48,7 +126,7 @@ void selecionar_operacao(Fila *fila, Lista *historico, Pedido *pedido, void(*imp
         switch (opcao)
         {
         case 1:
-            adicionar_pedido(fila, historico);
+            adicionar_pedido(fila);
             break;
         case 2:
             preparar_pedido(fila, historico);
@@ -70,7 +148,17 @@ void selecionar_operacao(Fila *fila, Lista *historico, Pedido *pedido, void(*imp
     }
 }
 
-void adicionar_pedido(Fila *fila, Lista *historico)
+/**
+ * @brief Adiciona um novo pedido à fila de pedidos.
+ * 
+ * Esta função exibe o cardápio e solicita ao usuário que insira o ID do pedido,
+ * o número da mesa e o nome do cliente. Em seguida, aloca memória para um novo
+ * pedido, define seus atributos e tenta inseri-lo na fila. Se a inserção falhar,
+ * a memória alocada é liberada.
+ * 
+ * @param fila Ponteiro para a fila de pedidos onde o novo pedido será adicionado.
+ */
+void adicionar_pedido(Fila *fila)
 {
     int id, mesa;
     char cliente[CHAR_SIZE];
@@ -116,22 +204,22 @@ void adicionar_pedido(Fila *fila, Lista *historico)
         printf("Erro ao adicionar pedido à fila.\n");
         free(pedido);
     }
-    if (!inserirInicio(historico, pedido))
-    {
-        printf("Erro ao adicionar pedido à fila.\n");
-        free(pedido);
-    }
+    
 }
 
 void preparar_pedido(Fila *fila, Lista *historico)
 {
-    // verificar se a fila está vazia
     if (!fila_vazia(fila))
     {
         Pedido pedido_preparado = (Pedido)fila_primeiroElemento(fila);
         remover(fila);
         printf("Pedido %d da mesa %d, cliente %s preparado\n", pedido_preparado->id + 1, pedido_preparado->mesa, pedido_preparado->cliente);
-        free(pedido_preparado);
+        
+        if (!inserirInicio(historico, pedido_preparado))
+        {
+            printf("Erro ao adicionar pedido ao histórico.\n");
+            free(pedido_preparado);
+        }
     }
     else
         printf("Não há pedidos em espera\n");
