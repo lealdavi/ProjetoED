@@ -1,10 +1,20 @@
-// lista circular duplamente encadeada com sentinela
-
+ /**
+ * @file lista.c
+ * @brief Implementação de uma lista circular, duplamente encadeada com sentinela.
+ * 
+ * Este arquivo contém as funções necessárias para manipular uma lista encadeada,
+ * incluindo inserções, remoções e acesso aos elementos.
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include "lista.h"
 
-// aloca a lista e o no sentinela, inicializa os indices e retorna um ponteiro para a lista
+/**
+ * @brief Inicializa e aloca uma lista circular duplamente encadeada e o nó sentinela.
+ * 
+ * @param max O número máximo de elementos da lista.
+ * @return Lista* Retorna um ponteiro para a nova lista criada.
+ */
 Lista *lista_inicializar(int max)
 {
     Lista *l = malloc(sizeof(Lista));
@@ -16,19 +26,43 @@ Lista *lista_inicializar(int max)
     return l;
 }
 
-// retorna 1 se sentinela aponta para si mesmo, ou seja, se a lista estiver vazia
+/**
+ * @brief Verifica se a lista está vazia.
+ * 
+ * Esta função retorna 1 se a lista estiver vazia, ou seja, 
+ * se o nó sentinela apontar para si mesmo.
+ * 
+ * @param l Ponteiro para a lista.
+ * @return int Retorna 1 se a lista estiver vazia, 0 caso contrário.
+ */ 
 int lista_vazia(Lista *l)
 {
     return l->sentinela->proximo == l->sentinela;
 }
 
-// retorna 1 se a qntd atual for igual a maxima, ou seja, se a lista estiver cheia
+/**
+ * @brief Verifica se a lista está cheia.
+ * 
+ * Esta função retorna 1 se a lista atingiu sua capacidade máxima,
+ * ou seja, se a quantidade de elementos armazenados é igual ao 
+ * limite máximo definido.
+ * 
+ * @param l Ponteiro para a lista.
+ * @return int Retorna 1 se a lista estiver cheia, 0 caso contrário.
+ */
 int lista_cheia(Lista *l)
 {
     return l->qntd == l->max;
 }
 
-// desaloca lista e sentinela
+/**
+ * @brief Libera a memória ocupada pela lista.
+ * 
+ * Esta função remove todos os elementos da lista e libera 
+ * a memória alocada para a estrutura da lista e seu nó sentinela.
+ * 
+ * @param l Ponteiro para a lista a ser destruída.
+ */
 void lista_destruir(Lista *l)
 {
     while (!lista_vazia(l))
@@ -39,7 +73,16 @@ void lista_destruir(Lista *l)
     free(l);
 }
 
-// remove elemento do inicio (proximo do sentinela), retornando 1 se funcionou e 0 se estiver vazia
+/**
+ * @brief Remove o primeiro elemento da lista.
+ * 
+ * Esta função remove o primeiro elemento da lista (logo após o nó sentinela).
+ * Se a lista estiver vazia, a função retorna 0 e nenhuma remoção é feita.
+ * Caso contrário, o primeiro nó é removido, e a função retorna 1.
+ * 
+ * @param l Ponteiro para a lista.
+ * @return int Retorna 1 se a remoção foi bem-sucedida, 0 se a lista estiver vazia.
+ */
 int removerInicio(Lista *l)
 {
     if (lista_vazia(l))
@@ -54,7 +97,16 @@ int removerInicio(Lista *l)
     return 1;
 }
 
-// remove elemento do fim (anterior ao sentinela), retornando 1 se funcionou e 0 se estiver vazia
+/**
+ * @brief Remove o último elemento da lista.
+ * 
+ * Esta função remove o último elemento da lista (antes do nó sentinela).
+ * Se a lista estiver vazia, a função retorna 0 e nenhuma remoção é feita.
+ * Caso contrário, o último nó é removido, e a função retorna 1.
+ * 
+ * @param l Ponteiro para a lista.
+ * @return int Retorna 1 se a remoção foi bem-sucedida, 0 se a lista estiver vazia.
+ */
 int removerFim(Lista *l)
 {
     if (lista_vazia(l))
@@ -69,7 +121,17 @@ int removerFim(Lista *l)
     return 1;
 }
 
-// insere elemento no inicio (proximo do sentinela), retornando 1 se funcionou e 0 se estiver cheia
+/**
+ * @brief Insere um elemento no início da lista.
+ * 
+ * Esta função insere um novo elemento no início da lista, logo após o nó sentinela.
+ * Se a lista estiver cheia ou a alocação de memória falhar, a função retorna 0.
+ * Caso contrário, o elemento é inserido corretamente e a função retorna 1.
+ * 
+ * @param l Ponteiro para a lista.
+ * @param dado Valor a ser inserido na lista.
+ * @return int Retorna 1 se a inserção for bem-sucedida, 0 se a lista estiver cheia ou a alocação falhar.
+ */
 int inserirInicio(Lista *l, T dado)
 {
     if (lista_cheia(l))
@@ -90,7 +152,17 @@ int inserirInicio(Lista *l, T dado)
     return 1;
 }
 
-// insere elemento no fim (anterior ao sentinela), retornando 1 se funcionou e 0 se estiver cheia
+/**
+ * @brief Insere um elemento no final da lista.
+ * 
+ * Esta função insere um novo elemento no final da lista, antes do nó sentinela.
+ * Se a lista estiver cheia ou a alocação de memória falhar, a função retorna 0.
+ * Caso contrário, o elemento é inserido corretamente e a função retorna 1.
+ * 
+ * @param l Ponteiro para a lista.
+ * @param dado Valor a ser inserido na lista.
+ * @return int Retorna 1 se a inserção for bem-sucedida, 0 se a lista estiver cheia ou a alocação falhar.
+ */
 int inserirFim(Lista *l, T dado)
 {
     if (lista_cheia(l))
@@ -111,19 +183,44 @@ int inserirFim(Lista *l, T dado)
     return 1;
 }
 
-// retorna o primeiro elemento
+/**
+ * @brief Retorna o primeiro elemento da lista.
+ * 
+ * Esta função retorna o dado armazenado no primeiro elemento da lista,
+ * ou seja, no nó imediatamente após o nó sentinela.
+ * 
+ * @param l Ponteiro para a lista.
+ * @return T O valor armazenado no primeiro nó da lista.
+ * @warning Se a lista estiver vazia, o comportamento é indefinido.
+ */
 T lista_primeiroElemento(Lista *l)
 {
     return l->sentinela->proximo->dado;
 }
 
-// retorna o ultimo elemento
+/**
+ * @brief Retorna o último elemento da lista.
+ * 
+ * Esta função retorna o dado armazenado no último elemento da lista,
+ * ou seja, no nó imediatamente antes do nó sentinela.
+ * 
+ * @param l Ponteiro para a lista.
+ * @return T O valor armazenado no último nó da lista.
+ * @warning Se a lista estiver vazia, o comportamento é indefinido.
+ */
 T lista_ultimoElemento(Lista *l)
 {
     return l->sentinela->anterior->dado;
 }
 
-// retorna a quantidade de elementos
+/**
+ * @brief Retorna a quantidade de elementos na lista.
+ * 
+ * Esta função retorna o número de elementos atualmente armazenados na lista.
+ * 
+ * @param l Ponteiro para a lista.
+ * @return int A quantidade de elementos na lista.
+ */
 int lista_quantidade(Lista *l)
 {
     return l->qntd;
@@ -168,6 +265,18 @@ int acabou(iterador i)
 }
 
 // imprime a lista na tela
+
+/**
+ * @brief Imprime os elementos da lista.
+ * 
+ * Esta função itera sobre os elementos da lista e chama uma função 
+ * de impressão fornecida para cada elemento. Os elementos são impressos
+ * na ordem em que aparecem na lista, começando pelo primeiro elemento.
+ * 
+ * @param l Ponteiro para a lista.
+ * @param print Ponteiro para a função de impressão que aceita um argumento do tipo T.
+ */
+
 void imprimirLista(Lista *l, void (*print)(T))
 {
     Node *n = l->sentinela->proximo;
