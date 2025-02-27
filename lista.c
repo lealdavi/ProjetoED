@@ -5,7 +5,8 @@
 #include "lista.h"
 
 // aloca a lista e o no sentinela, inicializa os indices e retorna um ponteiro para a lista
-Lista* inicializar (int max) {
+Lista *lista_inicializar(int max)
+{
     Lista *l = malloc(sizeof(Lista));
     l->max = max;
     l->qntd = 0;
@@ -16,18 +17,22 @@ Lista* inicializar (int max) {
 }
 
 // retorna 1 se sentinela aponta para si mesmo, ou seja, se a lista estiver vazia
-int vazia (Lista *l) {
+int lista_vazia(Lista *l)
+{
     return l->sentinela->proximo == l->sentinela;
 }
 
 // retorna 1 se a qntd atual for igual a maxima, ou seja, se a lista estiver cheia
-int cheia (Lista *l) {
+int lista_cheia(Lista *l)
+{
     return l->qntd == l->max;
 }
 
 // desaloca lista e sentinela
-void destruir (Lista *l) {
-    while (!vazia(l)) {
+void lista_destruir(Lista *l)
+{
+    while (!lista_vazia(l))
+    {
         removerInicio(l);
     }
     free(l->sentinela);
@@ -35,8 +40,10 @@ void destruir (Lista *l) {
 }
 
 // remove elemento do inicio (proximo do sentinela), retornando 1 se funcionou e 0 se estiver vazia
-int removerInicio (Lista *l) {
-    if (vazia(l)) return 0;
+int removerInicio(Lista *l)
+{
+    if (lista_vazia(l))
+        return 0;
 
     Node *inicio = l->sentinela->proximo;
     l->sentinela->proximo = inicio->proximo;
@@ -48,8 +55,10 @@ int removerInicio (Lista *l) {
 }
 
 // remove elemento do fim (anterior ao sentinela), retornando 1 se funcionou e 0 se estiver vazia
-int removerFim (Lista *l) {
-    if (vazia(l)) return 0;
+int removerFim(Lista *l)
+{
+    if (lista_vazia(l))
+        return 0;
 
     Node *fim = l->sentinela->anterior;
     l->sentinela->anterior = fim->anterior;
@@ -61,11 +70,14 @@ int removerFim (Lista *l) {
 }
 
 // insere elemento no inicio (proximo do sentinela), retornando 1 se funcionou e 0 se estiver cheia
-int inserirInicio (Lista *l, T dado) {
-    if (cheia(l)) return 0;
+int inserirInicio(Lista *l, T dado)
+{
+    if (lista_cheia(l))
+        return 0;
 
     Node *novo = malloc(sizeof(Node));
-    if (!novo) return 0;
+    if (!novo)
+        return 0;
 
     novo->dado = dado;
     novo->anterior = l->sentinela;
@@ -79,11 +91,14 @@ int inserirInicio (Lista *l, T dado) {
 }
 
 // insere elemento no fim (anterior ao sentinela), retornando 1 se funcionou e 0 se estiver cheia
-int inserirFim (Lista *l, T dado) {
-    if (cheia(l)) return 0;
+int inserirFim(Lista *l, T dado)
+{
+    if (lista_cheia(l))
+        return 0;
 
     Node *novo = malloc(sizeof(Node));
-    if (!novo) return 0;
+    if (!novo)
+        return 0;
 
     novo->dado = dado;
     novo->proximo = l->sentinela;
@@ -97,26 +112,30 @@ int inserirFim (Lista *l, T dado) {
 }
 
 // retorna o primeiro elemento
-T primeiroElemento (Lista *l) {
+T lista_primeiroElemento(Lista *l)
+{
     return l->sentinela->proximo->dado;
 }
 
 // retorna o ultimo elemento
-T ultimoElemento (Lista *l) {
+T lista_ultimoElemento(Lista *l)
+{
     return l->sentinela->anterior->dado;
 }
 
 // retorna a quantidade de elementos
-int quantidade (Lista *l) {
+int lista_quantidade(Lista *l)
+{
     return l->qntd;
 }
 
 // imprime a lista na tela
-void imprimirLista (Lista *l) {
+void imprimirLista(Lista *l, void (*print)(T))
+{
     Node *n = l->sentinela->proximo;
-    while (n != l->sentinela) {
-        printf("%d ", n->dado);
+    while (n != l->sentinela)
+    {
+        print(n->dado);
         n = n->proximo;
     }
-    printf("\n");
 }
