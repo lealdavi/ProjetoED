@@ -129,6 +129,44 @@ int lista_quantidade(Lista *l)
     return l->qntd;
 }
 
+// funções para iterador
+iterador primeiro(Lista *l)
+{
+    iterador i;
+    i.posicao = l->sentinela->proximo;
+    i.estrutura = l;
+    return i;
+}
+iterador ultimo(Lista *l)
+{
+    iterador i;
+    i.posicao = l->sentinela->anterior;
+    i.estrutura = l;
+    return i;
+}
+void proximo(iterador *i)
+{
+    if (!acabou(*i))
+        i->posicao = i->posicao->proximo;
+}
+
+void anterior(iterador *i)
+{
+    if (!acabou(*i))
+        i->posicao = i->posicao->anterior;
+}
+
+T elemento(iterador i)
+{
+    if (!acabou(i))
+        return i.posicao->dado;
+}
+
+int acabou(iterador i)
+{
+    return (i.posicao == i.estrutura->sentinela);
+}
+
 // imprime a lista na tela
 void imprimirLista(Lista *l, void (*print)(T))
 {
