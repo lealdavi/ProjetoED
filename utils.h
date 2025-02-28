@@ -67,6 +67,4 @@ char cardapio[NUM_ITENS][100] = {
     "Martini Dry 750ml",
     "Cognac Louis XIII 700ml"};
 
-
-
 #endif

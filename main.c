@@ -70,23 +70,39 @@ void listar_historico(Lista *historico);
 void imprimirDados(void *p);
 
 /**
- * @brief Função principal do programa.
- * 
- * Inicializa a fila e a lista de histórico, aloca memória para um pedido,
- * e chama a função para selecionar operações com base na interação do usuário.
- * 
- * @return int Retorna 0 ao final da execução do programa.
- */
-
-/**
  * @brief Imprime os elementos da lista na ordem do iterador.
  *
  * @param historico Ponteiro para a lista que será iterada e impressa.
  */
-void imprimirIterador(Lista *historico);
+void imprimirHistorico (Lista *historico);
 
+/**
+ * @brief Calcula o preço total dos itens no histórico.
+ * 
+ * @param historico Ponteiro para a lista que contém os itens e seus preços.
+ * @return O preço total calculado.
+ */
 int precoTotal(Lista *historico);
 
+/**
+ * @brief Calcula o preço total dos pedidos feitos por uma mesa no histórico.
+ * 
+ * Esta função percorre todos os pedidos no histórico e soma os preços dos pedidos feitos por uma mesa específica. 
+ * O número da mesa é fornecido pelo usuário durante a execução.
+ * 
+ * @param historico Ponteiro para a lista de pedidos.
+ * @return O preço total dos pedidos feitos pela mesa especificada.
+ */
+void precoMesa (Lista *historico);
+
+/**
+ * @brief Função principal que inicializa e gerencia o fluxo do programa.
+ * 
+ * Esta função inicializa a fila de pedidos e o histórico de pedidos, exibe uma mensagem de boas-vindas, e chama a função 
+ * para selecionar e realizar as operações desejadas pelo usuário.
+ * 
+ * @return Retorna 0 indicando a execução bem-sucedida do programa.
+ */
 int main()
 {
     Fila *fila;                      ///< Ponteiro para a fila de pedidos.
@@ -126,15 +142,16 @@ int main()
 void selecionar_operacao(Fila *fila, Lista *historico, Pedido *pedido, void(*imprimirDados))
 {
     int opcao = 0;
-    while (opcao != 5)
+    while (opcao != 6)
     {
         printf("\n");
         printf("Selecione a operação desejada:\n");
         printf("1 - Adicionar pedido\n");
         printf("2 - Preparar pedido\n");
-        printf("3 - Listar pedidos em espera\n");
-        printf("4 - Listar histórico de pedidos concluídos\n");
-        printf("5 - Finalizar operação\n");
+        printf("3 - Valor total por mesa\n");
+        printf("4 - Listar pedidos em espera\n");
+        printf("5 - Listar histórico de pedidos concluídos\n");
+        printf("6 - Finalizar operação\n");
         printf("\n");
         scanf("%d", &opcao);
 
@@ -147,13 +164,16 @@ void selecionar_operacao(Fila *fila, Lista *historico, Pedido *pedido, void(*imp
             preparar_pedido(fila, historico);
             break;
         case 3:
-            listar_espera(fila, imprimirDados);
+            precoMesa(historico);
             break;
         case 4:
-            //imprimirIterador(historico);
-            listar_historico(historico);
+            listar_espera(fila, imprimirDados);
             break;
         case 5:
+            //imprimirHistorico (historico);
+            listar_historico(historico);
+            break;
+        case 6:
             fila_destruir(fila);
             lista_destruir(historico);
             break;
@@ -182,7 +202,7 @@ void adicionar_pedido(Fila *fila)
     printf("\n");
     printf("Cardápio - ARRAY GOURMET :\n");
     printf("01 - Creme Brûlée ----------------------------- R$50,00\n");
-    printf("02 - Risoto de Aspargos e Limão Siciliano ----- R$110,00\n");
+    printf("02 - Risoto de Aspargos e Limão Siciliano------ R$110,00\n");
     printf("03 - Ravioli de Lagosta ----------------------- R$200,00\n");
     printf("04 - Tartare de Salmão ------------------------ R$70,00\n");
     printf("05 - Filet Mignon ao Molho Béarnaise ---------- R$250,00\n");
@@ -271,7 +291,7 @@ void listar_espera(Fila *fila, void(*imprimirDados))
         return;
     }
     printf("Pedidos em espera:\n");
-    printf("| %-*s | %-*s | %-*s | %-*s |\n", 20, "Pedido", 13, "Preço", 30, "Cliente", 10, "Mesa");
+    printf("| %-*s | %-*s | %-*s | %-*s |\n", 40, "Pedido", 13, "Preço", 30, "Cliente", 10, "Mesa");
     imprimirFila(fila, imprimirDados);
 }
 
@@ -293,9 +313,9 @@ void listar_historico(Lista *historico)
         return;
     }
     printf("Histórico de pedidos:\n");
-    printf("| %-*s | %-*s | %-*s | %-*s |\n", 20, "Pedido", 13, "Preço", 30, "Cliente", 10, "Mesa");
-    imprimirIterador(historico);
-    printf("\nPreço Total: R$%d\n", precoTotal(historico));
+    printf("| %-*s | %-*s | %-*s | %-*s |\n", 40, "Pedido", 13, "Preço", 30, "Cliente", 10, "Mesa");
+    imprimirHistorico (historico);
+    printf("\nPreço Total: R$%d,00\n", precoTotal(historico));   
 }
 
 /**
@@ -310,20 +330,35 @@ void imprimirDados(void *p)
 {
     Pedido pedido = (Pedido)p;
 
-    printf("| %-*s | R$%-*d | %-*s | %-*d |\n", 20, cardapio[pedido->id], 10, pedido->preco, 30, pedido->cliente, 10, pedido->mesa);
+    printf("| %-*s | R$%-*d | %-*s | %-*d |\n", 40, cardapio[pedido->id], 10, pedido->preco, 30, pedido->cliente, 10, pedido->mesa);
 }
 
-void imprimirIterador(Lista *historico)
+/**
+ * @brief Imprime os dados dos pedidos presentes no histórico.
+ * 
+ * Esta função itera sobre todos os pedidos no histórico e imprime informações formatadas sobre cada um, incluindo o nome do prato, o preço, o cliente e o número da mesa.
+ * 
+ * @param historico Ponteiro para a lista de pedidos a ser impressa.
+ */
+void imprimirHistorico(Lista *historico)
 {
     iterador it = primeiro(historico);
     while (!acabou(it))
     {
         Pedido pedido = (Pedido)elemento(it);
-        printf("| %-*s | R$%-*d | %-*s | %-*d |\n", 20, cardapio[pedido->id], 10, pedido->preco, 30, pedido->cliente, 10, pedido->mesa);
+        printf("| %-*s | R$%-*d | %-*s | %-*d |\n", 40, cardapio[pedido->id], 10, pedido->preco, 30, pedido->cliente, 10, pedido->mesa);
         proximo(&it);
     }
 }
 
+/**
+ * @brief Calcula o preço total dos pedidos no histórico.
+ * 
+ * Esta função percorre todos os pedidos presentes no histórico e soma os preços de cada pedido para calcular o preço total.
+ * 
+ * @param historico Ponteiro para a lista de pedidos.
+ * @return O preço total calculado.
+ */
 int precoTotal (Lista *historico) 
 {
     int preco = 0;
@@ -336,4 +371,45 @@ int precoTotal (Lista *historico)
     }
 
     return preco;
+}
+
+/**
+ * @brief Calcula e imprime o preço total dos pedidos feitos por uma mesa no histórico.
+ * 
+ * Esta função solicita ao usuário o número da mesa, percorre o histórico de pedidos e soma os preços dos pedidos feitos 
+ * pela mesa especificada. Caso a mesa não tenha pedidos concluídos, uma mensagem é exibida informando o usuário. 
+ * Se a mesa tiver pedidos, o valor total é exibido.
+ * 
+ * @param historico Ponteiro para a lista de pedidos.
+ */
+void precoMesa (Lista *historico) {
+
+    // Verifica se a lista de pedidos está vazia
+    if (lista_vazia(historico)) {
+        printf ("Não há pedidos concluídos ainda.\n");
+        return;
+    }
+
+    int mesa, encontrado = 0;
+    
+    printf("\nDigite o numero da mesa: ");
+    // Lê o número da mesa fornecido pelo usuário
+    scanf("%d", &mesa);
+
+    int preco = 0;
+    iterador it = primeiro(historico);
+
+    // Percorre todos os pedidos no histórico    
+    while (!acabou(it))
+    {
+        Pedido pedido = (Pedido)elemento(it);
+        if (pedido->mesa == mesa) {
+            preco += pedido->preco;
+            encontrado = 1;
+        }
+        proximo(&it);
+    }
+
+    if (!encontrado) printf ("Os pedidos da mesa %d ainda não foram concluídos", mesa);
+    else printf("Valor total na mesa %d: R$%d,00\n", mesa, preco);
 }
