@@ -176,6 +176,7 @@ void selecionar_operacao(Fila *fila, Lista *historico, Pedido *pedido, void(*imp
         case 6:
             fila_destruir(fila);
             lista_destruir(historico);
+            printf("\nMuito obrigada por escolher o ARRAY GOURMET!\nAté a próxima :)\n\n");
             break;
         default:
             printf("Opção inválida\n");
