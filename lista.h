@@ -168,25 +168,13 @@ T lista_ultimoElemento(Lista *l);
  * @return int A quantidade de elementos na lista.
  */
 int lista_quantidade(Lista *l);
+
 iterador primeiro(Lista *l);
 iterador ultimo(Lista *l);
 void proximo(iterador *i);
 void anterior(iterador *i);
 T elemento(iterador i);
 int acabou(iterador i);
-
-
-/**
- * @brief Imprime os elementos da lista.
- * 
- * Esta função itera sobre os elementos da lista e chama uma função 
- * de impressão fornecida para cada elemento. Os elementos são impressos
- * na ordem em que aparecem na lista, começando pelo primeiro elemento.
- * 
- * @param l Ponteiro para a lista.
- * @param print Ponteiro para a função de impressão que aceita um argumento do tipo T.
- */
-void imprimirLista(Lista *l, void (*print)(T));
 
 
 #endif

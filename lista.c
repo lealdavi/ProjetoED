@@ -226,7 +226,12 @@ int lista_quantidade(Lista *l)
     return l->qntd;
 }
 
-// funções para iterador
+/**
+ * @brief Obtém o primeiro elemento da lista.
+ * 
+ * @param l Ponteiro para a lista.
+ * @return Iterador apontando para o primeiro elemento da lista.
+ */
 iterador primeiro(Lista *l)
 {
     iterador i;
@@ -234,6 +239,13 @@ iterador primeiro(Lista *l)
     i.estrutura = l;
     return i;
 }
+
+/**
+ * @brief Obtém o último elemento da lista.
+ * 
+ * @param l Ponteiro para a lista.
+ * @return Iterador apontando para o último elemento da lista.
+ */
 iterador ultimo(Lista *l)
 {
     iterador i;
@@ -241,48 +253,48 @@ iterador ultimo(Lista *l)
     i.estrutura = l;
     return i;
 }
+
+/**
+ * @brief Avança o iterador para o próximo elemento da lista.
+ * 
+ * @param i Ponteiro para o iterador.
+ */
 void proximo(iterador *i)
 {
     if (!acabou(*i))
         i->posicao = i->posicao->proximo;
 }
 
+/**
+ * @brief Retrocede o iterador para o elemento anterior da lista.
+ * 
+ * @param i Ponteiro para o iterador.
+ */
 void anterior(iterador *i)
 {
     if (!acabou(*i))
         i->posicao = i->posicao->anterior;
 }
 
+/**
+ * @brief Retorna o elemento atual do iterador.
+ * 
+ * @param i Iterador.
+ * @return Elemento do tipo T armazenado na posição atual do iterador.
+ */
 T elemento(iterador i)
 {
     if (!acabou(i))
         return i.posicao->dado;
 }
 
+/**
+ * @brief Verifica se o iterador chegou ao final da lista.
+ * 
+ * @param i Iterador.
+ * @return 1 se o iterador está no final da lista, 0 caso contrário.
+ */
 int acabou(iterador i)
 {
     return (i.posicao == i.estrutura->sentinela);
-}
-
-// imprime a lista na tela
-
-/**
- * @brief Imprime os elementos da lista.
- * 
- * Esta função itera sobre os elementos da lista e chama uma função 
- * de impressão fornecida para cada elemento. Os elementos são impressos
- * na ordem em que aparecem na lista, começando pelo primeiro elemento.
- * 
- * @param l Ponteiro para a lista.
- * @param print Ponteiro para a função de impressão que aceita um argumento do tipo T.
- */
-
-void imprimirLista(Lista *l, void (*print)(T))
-{
-    Node *n = l->sentinela->proximo;
-    while (n != l->sentinela)
-    {
-        print(n->dado);
-        n = n->proximo;
-    }
 }
