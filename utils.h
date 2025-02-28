@@ -1,3 +1,7 @@
+/**
+ * @file utils.h
+ * @brief Descrições de preços, cardápio e struct pedido
+ */
 #ifndef UTILS_H
 #define UTILS_H
 

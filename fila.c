@@ -1,5 +1,10 @@
-// fila com alocacao dinamica e sequencial
-
+/**
+ * @file fila.c
+ * @brief Implementação de uma fila com alocacao dinamica e sequencial
+ * 
+ * Este arquivo contém as funções necessárias para manipular uma fila sequencial,
+ * incluindo inserções, remoções e acesso aos elementos.
+ */
 #include <stdlib.h>
 #include <stdio.h>
 #include "fila.h"

@@ -1,0 +1,386 @@
+\doxysection{lista.\+c File Reference}
+\hypertarget{lista_8c}{}\label{lista_8c}\index{lista.c@{lista.c}}
+
+
+Implementação de uma lista circular, duplamente encadeada com sentinela.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include "{}lista.\+h"{}}\newline
+Include dependency graph for lista.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_lista}{Lista}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{lista_8c_a283ad447ac37e8c76c246acae2425d03}{lista\+\_\+inicializar}} (int max)
+\begin{DoxyCompactList}\small\item\em Inicializa e aloca uma lista circular duplamente encadeada e o nó sentinela. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{lista_8c_ad43d43c4fd8b7e95a5619631acbe665f}{lista\+\_\+vazia}} (\mbox{\hyperlink{struct_lista}{Lista}} \texorpdfstring{$\ast$}{*}l)
+\begin{DoxyCompactList}\small\item\em Verifica se a lista está vazia. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{lista_8c_a4206b815940fca78aeb41c9eb8887710}{lista\+\_\+cheia}} (\mbox{\hyperlink{struct_lista}{Lista}} \texorpdfstring{$\ast$}{*}l)
+\begin{DoxyCompactList}\small\item\em Verifica se a lista está cheia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lista_8c_ac2e5acf9bd67a224999f459c1010c74e}{lista\+\_\+destruir}} (\mbox{\hyperlink{struct_lista}{Lista}} \texorpdfstring{$\ast$}{*}l)
+\begin{DoxyCompactList}\small\item\em Libera a memória ocupada pela lista. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{lista_8c_a57fd02945f3088cca0926623f5907e98}{remover\+Inicio}} (\mbox{\hyperlink{struct_lista}{Lista}} \texorpdfstring{$\ast$}{*}l)
+\begin{DoxyCompactList}\small\item\em Remove o primeiro elemento da lista. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{lista_8c_ac2ca1c0bf29304382832e8234feaf465}{remover\+Fim}} (\mbox{\hyperlink{struct_lista}{Lista}} \texorpdfstring{$\ast$}{*}l)
+\begin{DoxyCompactList}\small\item\em Remove o último elemento da lista. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{lista_8c_af7d1fb59504723c54db3c2d03cd611a3}{inserir\+Inicio}} (\mbox{\hyperlink{struct_lista}{Lista}} \texorpdfstring{$\ast$}{*}l, T dado)
+\begin{DoxyCompactList}\small\item\em Insere um elemento no início da lista. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{lista_8c_af842bd9b4ebf39cf91221598f3b12b91}{inserir\+Fim}} (\mbox{\hyperlink{struct_lista}{Lista}} \texorpdfstring{$\ast$}{*}l, T dado)
+\begin{DoxyCompactList}\small\item\em Insere um elemento no final da lista. \end{DoxyCompactList}\item 
+T \mbox{\hyperlink{lista_8c_aa319facca241e1cb9ab562fcfff2fa47}{lista\+\_\+primeiro\+Elemento}} (\mbox{\hyperlink{struct_lista}{Lista}} \texorpdfstring{$\ast$}{*}l)
+\begin{DoxyCompactList}\small\item\em Retorna o primeiro elemento da lista. \end{DoxyCompactList}\item 
+T \mbox{\hyperlink{lista_8c_a42a8e85c35be50b92cdb03af00b103f8}{lista\+\_\+ultimo\+Elemento}} (\mbox{\hyperlink{struct_lista}{Lista}} \texorpdfstring{$\ast$}{*}l)
+\begin{DoxyCompactList}\small\item\em Retorna o último elemento da lista. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{lista_8c_adf7cf2c3331f08ff0726a112659dcd21}{lista\+\_\+quantidade}} (\mbox{\hyperlink{struct_lista}{Lista}} \texorpdfstring{$\ast$}{*}l)
+\begin{DoxyCompactList}\small\item\em Retorna a quantidade de elementos na lista. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structiterador}{iterador}} \mbox{\hyperlink{lista_8c_a89175048a77d655736812e33e7cafc94}{primeiro}} (\mbox{\hyperlink{struct_lista}{Lista}} \texorpdfstring{$\ast$}{*}l)
+\begin{DoxyCompactList}\small\item\em Obtém o primeiro elemento da lista. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structiterador}{iterador}} \mbox{\hyperlink{lista_8c_aa42f5683271390ee9b59bc7f646a37d2}{ultimo}} (\mbox{\hyperlink{struct_lista}{Lista}} \texorpdfstring{$\ast$}{*}l)
+\begin{DoxyCompactList}\small\item\em Obtém o último elemento da lista. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lista_8c_adccf4c55749704780d25e68ff817854e}{proximo}} (\mbox{\hyperlink{structiterador}{iterador}} \texorpdfstring{$\ast$}{*}i)
+\begin{DoxyCompactList}\small\item\em Avança o iterador para o próximo elemento da lista. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lista_8c_a71d022994985413726a84828f2bbc003}{anterior}} (\mbox{\hyperlink{structiterador}{iterador}} \texorpdfstring{$\ast$}{*}i)
+\begin{DoxyCompactList}\small\item\em Retrocede o iterador para o elemento anterior da lista. \end{DoxyCompactList}\item 
+T \mbox{\hyperlink{lista_8c_af85d81013144568c7ac1fe95f8759b50}{elemento}} (\mbox{\hyperlink{structiterador}{iterador}} i)
+\begin{DoxyCompactList}\small\item\em Retorna o elemento atual do iterador. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{lista_8c_a48a58bc5fa9d9b02ef517befcf1f4d27}{acabou}} (\mbox{\hyperlink{structiterador}{iterador}} i)
+\begin{DoxyCompactList}\small\item\em Verifica se o iterador chegou ao final da lista. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementação de uma lista circular, duplamente encadeada com sentinela. 
+
+Este arquivo contém as funções necessárias para manipular uma lista encadeada, incluindo inserções, remoções e acesso aos elementos. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{lista_8c_a48a58bc5fa9d9b02ef517befcf1f4d27}\index{lista.c@{lista.c}!acabou@{acabou}}
+\index{acabou@{acabou}!lista.c@{lista.c}}
+\doxysubsubsection{\texorpdfstring{acabou()}{acabou()}}
+{\footnotesize\ttfamily \label{lista_8c_a48a58bc5fa9d9b02ef517befcf1f4d27} 
+int acabou (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structiterador}{iterador}}}]{i}{}\end{DoxyParamCaption})}
+
+
+
+Verifica se o iterador chegou ao final da lista. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & Iterador. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 se o iterador está no final da lista, 0 caso contrário. 
+\end{DoxyReturn}
+\Hypertarget{lista_8c_a71d022994985413726a84828f2bbc003}\index{lista.c@{lista.c}!anterior@{anterior}}
+\index{anterior@{anterior}!lista.c@{lista.c}}
+\doxysubsubsection{\texorpdfstring{anterior()}{anterior()}}
+{\footnotesize\ttfamily \label{lista_8c_a71d022994985413726a84828f2bbc003} 
+void anterior (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structiterador}{iterador}} \texorpdfstring{$\ast$}{*}}]{i}{}\end{DoxyParamCaption})}
+
+
+
+Retrocede o iterador para o elemento anterior da lista. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & Ponteiro para o iterador. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{lista_8c_af85d81013144568c7ac1fe95f8759b50}\index{lista.c@{lista.c}!elemento@{elemento}}
+\index{elemento@{elemento}!lista.c@{lista.c}}
+\doxysubsubsection{\texorpdfstring{elemento()}{elemento()}}
+{\footnotesize\ttfamily \label{lista_8c_af85d81013144568c7ac1fe95f8759b50} 
+T elemento (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structiterador}{iterador}}}]{i}{}\end{DoxyParamCaption})}
+
+
+
+Retorna o elemento atual do iterador. 
+
+Retorna o elemento atual apontado pelo iterador.
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & Iterador. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Elemento do tipo T armazenado na posição atual do iterador. 
+\end{DoxyReturn}
+\Hypertarget{lista_8c_af842bd9b4ebf39cf91221598f3b12b91}\index{lista.c@{lista.c}!inserirFim@{inserirFim}}
+\index{inserirFim@{inserirFim}!lista.c@{lista.c}}
+\doxysubsubsection{\texorpdfstring{inserirFim()}{inserirFim()}}
+{\footnotesize\ttfamily \label{lista_8c_af842bd9b4ebf39cf91221598f3b12b91} 
+int inserir\+Fim (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista}{Lista}} \texorpdfstring{$\ast$}{*}}]{l}{, }\item[{T}]{dado}{}\end{DoxyParamCaption})}
+
+
+
+Insere um elemento no final da lista. 
+
+Esta função insere um novo elemento no final da lista, antes do nó sentinela. Se a lista estiver cheia ou a alocação de memória falhar, a função retorna 0. Caso contrário, o elemento é inserido corretamente e a função retorna 1.
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & Ponteiro para a lista. \\
+\hline
+{\em dado} & Valor a ser inserido na lista. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Retorna 1 se a inserção for bem-\/sucedida, 0 se a lista estiver cheia ou a alocação falhar. 
+\end{DoxyReturn}
+\Hypertarget{lista_8c_af7d1fb59504723c54db3c2d03cd611a3}\index{lista.c@{lista.c}!inserirInicio@{inserirInicio}}
+\index{inserirInicio@{inserirInicio}!lista.c@{lista.c}}
+\doxysubsubsection{\texorpdfstring{inserirInicio()}{inserirInicio()}}
+{\footnotesize\ttfamily \label{lista_8c_af7d1fb59504723c54db3c2d03cd611a3} 
+int inserir\+Inicio (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista}{Lista}} \texorpdfstring{$\ast$}{*}}]{l}{, }\item[{T}]{dado}{}\end{DoxyParamCaption})}
+
+
+
+Insere um elemento no início da lista. 
+
+Esta função insere um novo elemento no início da lista, logo após o nó sentinela. Se a lista estiver cheia ou a alocação de memória falhar, a função retorna 0. Caso contrário, o elemento é inserido corretamente e a função retorna 1.
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & Ponteiro para a lista. \\
+\hline
+{\em dado} & Valor a ser inserido na lista. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Retorna 1 se a inserção for bem-\/sucedida, 0 se a lista estiver cheia ou a alocação falhar. 
+\end{DoxyReturn}
+\Hypertarget{lista_8c_a4206b815940fca78aeb41c9eb8887710}\index{lista.c@{lista.c}!lista\_cheia@{lista\_cheia}}
+\index{lista\_cheia@{lista\_cheia}!lista.c@{lista.c}}
+\doxysubsubsection{\texorpdfstring{lista\_cheia()}{lista\_cheia()}}
+{\footnotesize\ttfamily \label{lista_8c_a4206b815940fca78aeb41c9eb8887710} 
+int lista\+\_\+cheia (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista}{Lista}} \texorpdfstring{$\ast$}{*}}]{l}{}\end{DoxyParamCaption})}
+
+
+
+Verifica se a lista está cheia. 
+
+Esta função retorna 1 se a lista atingiu sua capacidade máxima, ou seja, se a quantidade de elementos armazenados é igual ao limite máximo definido.
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & Ponteiro para a lista. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Retorna 1 se a lista estiver cheia, 0 caso contrário. 
+\end{DoxyReturn}
+\Hypertarget{lista_8c_ac2e5acf9bd67a224999f459c1010c74e}\index{lista.c@{lista.c}!lista\_destruir@{lista\_destruir}}
+\index{lista\_destruir@{lista\_destruir}!lista.c@{lista.c}}
+\doxysubsubsection{\texorpdfstring{lista\_destruir()}{lista\_destruir()}}
+{\footnotesize\ttfamily \label{lista_8c_ac2e5acf9bd67a224999f459c1010c74e} 
+void lista\+\_\+destruir (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista}{Lista}} \texorpdfstring{$\ast$}{*}}]{l}{}\end{DoxyParamCaption})}
+
+
+
+Libera a memória ocupada pela lista. 
+
+Esta função remove todos os elementos da lista e libera a memória alocada para a estrutura da lista e seu nó sentinela.
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & Ponteiro para a lista a ser destruída. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{lista_8c_a283ad447ac37e8c76c246acae2425d03}\index{lista.c@{lista.c}!lista\_inicializar@{lista\_inicializar}}
+\index{lista\_inicializar@{lista\_inicializar}!lista.c@{lista.c}}
+\doxysubsubsection{\texorpdfstring{lista\_inicializar()}{lista\_inicializar()}}
+{\footnotesize\ttfamily \label{lista_8c_a283ad447ac37e8c76c246acae2425d03} 
+\mbox{\hyperlink{struct_lista}{Lista}} \texorpdfstring{$\ast$}{*} lista\+\_\+inicializar (\begin{DoxyParamCaption}\item[{int}]{max}{}\end{DoxyParamCaption})}
+
+
+
+Inicializa e aloca uma lista circular duplamente encadeada e o nó sentinela. 
+
+Inicializa uma nova lista com um limite máximo de elementos.
+
+
+\begin{DoxyParams}{Parameters}
+{\em max} & O número máximo de elementos da lista. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Lista\texorpdfstring{$\ast$}{*} Retorna um ponteiro para a nova lista criada. 
+\end{DoxyReturn}
+\Hypertarget{lista_8c_aa319facca241e1cb9ab562fcfff2fa47}\index{lista.c@{lista.c}!lista\_primeiroElemento@{lista\_primeiroElemento}}
+\index{lista\_primeiroElemento@{lista\_primeiroElemento}!lista.c@{lista.c}}
+\doxysubsubsection{\texorpdfstring{lista\_primeiroElemento()}{lista\_primeiroElemento()}}
+{\footnotesize\ttfamily \label{lista_8c_aa319facca241e1cb9ab562fcfff2fa47} 
+T lista\+\_\+primeiro\+Elemento (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista}{Lista}} \texorpdfstring{$\ast$}{*}}]{l}{}\end{DoxyParamCaption})}
+
+
+
+Retorna o primeiro elemento da lista. 
+
+Esta função retorna o dado armazenado no primeiro elemento da lista, ou seja, no nó imediatamente após o nó sentinela. Não pode ser chamada se a lista estiver vazia.
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & Ponteiro para a lista. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T O valor armazenado no primeiro nó da lista. 
+\end{DoxyReturn}
+\Hypertarget{lista_8c_adf7cf2c3331f08ff0726a112659dcd21}\index{lista.c@{lista.c}!lista\_quantidade@{lista\_quantidade}}
+\index{lista\_quantidade@{lista\_quantidade}!lista.c@{lista.c}}
+\doxysubsubsection{\texorpdfstring{lista\_quantidade()}{lista\_quantidade()}}
+{\footnotesize\ttfamily \label{lista_8c_adf7cf2c3331f08ff0726a112659dcd21} 
+int lista\+\_\+quantidade (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista}{Lista}} \texorpdfstring{$\ast$}{*}}]{l}{}\end{DoxyParamCaption})}
+
+
+
+Retorna a quantidade de elementos na lista. 
+
+Esta função retorna o número de elementos atualmente armazenados na lista.
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & Ponteiro para a lista. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int A quantidade de elementos na lista. 
+\end{DoxyReturn}
+\Hypertarget{lista_8c_a42a8e85c35be50b92cdb03af00b103f8}\index{lista.c@{lista.c}!lista\_ultimoElemento@{lista\_ultimoElemento}}
+\index{lista\_ultimoElemento@{lista\_ultimoElemento}!lista.c@{lista.c}}
+\doxysubsubsection{\texorpdfstring{lista\_ultimoElemento()}{lista\_ultimoElemento()}}
+{\footnotesize\ttfamily \label{lista_8c_a42a8e85c35be50b92cdb03af00b103f8} 
+T lista\+\_\+ultimo\+Elemento (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista}{Lista}} \texorpdfstring{$\ast$}{*}}]{l}{}\end{DoxyParamCaption})}
+
+
+
+Retorna o último elemento da lista. 
+
+Esta função retorna o dado armazenado no último elemento da lista, ou seja, no nó imediatamente antes do nó sentinela. Não pode ser chamada se a lista estiver vazia.
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & Ponteiro para a lista. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T O valor armazenado no último nó da lista. 
+\end{DoxyReturn}
+\Hypertarget{lista_8c_ad43d43c4fd8b7e95a5619631acbe665f}\index{lista.c@{lista.c}!lista\_vazia@{lista\_vazia}}
+\index{lista\_vazia@{lista\_vazia}!lista.c@{lista.c}}
+\doxysubsubsection{\texorpdfstring{lista\_vazia()}{lista\_vazia()}}
+{\footnotesize\ttfamily \label{lista_8c_ad43d43c4fd8b7e95a5619631acbe665f} 
+int lista\+\_\+vazia (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista}{Lista}} \texorpdfstring{$\ast$}{*}}]{l}{}\end{DoxyParamCaption})}
+
+
+
+Verifica se a lista está vazia. 
+
+Esta função retorna 1 se a lista estiver vazia, ou seja, se o nó sentinela apontar para si mesmo.
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & Ponteiro para a lista. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Retorna 1 se a lista estiver vazia, 0 caso contrário. 
+\end{DoxyReturn}
+\Hypertarget{lista_8c_a89175048a77d655736812e33e7cafc94}\index{lista.c@{lista.c}!primeiro@{primeiro}}
+\index{primeiro@{primeiro}!lista.c@{lista.c}}
+\doxysubsubsection{\texorpdfstring{primeiro()}{primeiro()}}
+{\footnotesize\ttfamily \label{lista_8c_a89175048a77d655736812e33e7cafc94} 
+\mbox{\hyperlink{structiterador}{iterador}} primeiro (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista}{Lista}} \texorpdfstring{$\ast$}{*}}]{l}{}\end{DoxyParamCaption})}
+
+
+
+Obtém o primeiro elemento da lista. 
+
+Retorna um iterador para o primeiro elemento da lista.
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & Ponteiro para a lista. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Iterador apontando para o primeiro elemento da lista. 
+\end{DoxyReturn}
+\Hypertarget{lista_8c_adccf4c55749704780d25e68ff817854e}\index{lista.c@{lista.c}!proximo@{proximo}}
+\index{proximo@{proximo}!lista.c@{lista.c}}
+\doxysubsubsection{\texorpdfstring{proximo()}{proximo()}}
+{\footnotesize\ttfamily \label{lista_8c_adccf4c55749704780d25e68ff817854e} 
+void proximo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structiterador}{iterador}} \texorpdfstring{$\ast$}{*}}]{i}{}\end{DoxyParamCaption})}
+
+
+
+Avança o iterador para o próximo elemento da lista. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & Ponteiro para o iterador. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{lista_8c_ac2ca1c0bf29304382832e8234feaf465}\index{lista.c@{lista.c}!removerFim@{removerFim}}
+\index{removerFim@{removerFim}!lista.c@{lista.c}}
+\doxysubsubsection{\texorpdfstring{removerFim()}{removerFim()}}
+{\footnotesize\ttfamily \label{lista_8c_ac2ca1c0bf29304382832e8234feaf465} 
+int remover\+Fim (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista}{Lista}} \texorpdfstring{$\ast$}{*}}]{l}{}\end{DoxyParamCaption})}
+
+
+
+Remove o último elemento da lista. 
+
+Esta função remove o último elemento da lista (antes do nó sentinela). Se a lista estiver vazia, a função retorna 0 e nenhuma remoção é feita. Caso contrário, o último nó é removido, e a função retorna 1.
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & Ponteiro para a lista. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Retorna 1 se a remoção foi bem-\/sucedida, 0 se a lista estiver vazia. 
+\end{DoxyReturn}
+\Hypertarget{lista_8c_a57fd02945f3088cca0926623f5907e98}\index{lista.c@{lista.c}!removerInicio@{removerInicio}}
+\index{removerInicio@{removerInicio}!lista.c@{lista.c}}
+\doxysubsubsection{\texorpdfstring{removerInicio()}{removerInicio()}}
+{\footnotesize\ttfamily \label{lista_8c_a57fd02945f3088cca0926623f5907e98} 
+int remover\+Inicio (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista}{Lista}} \texorpdfstring{$\ast$}{*}}]{l}{}\end{DoxyParamCaption})}
+
+
+
+Remove o primeiro elemento da lista. 
+
+Esta função remove o primeiro elemento da lista (logo após o nó sentinela). Se a lista estiver vazia, a função retorna 0 e nenhuma remoção é feita. Caso contrário, o primeiro nó é removido, e a função retorna 1.
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & Ponteiro para a lista. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Retorna 1 se a remoção foi bem-\/sucedida, 0 se a lista estiver vazia. 
+\end{DoxyReturn}
+\Hypertarget{lista_8c_aa42f5683271390ee9b59bc7f646a37d2}\index{lista.c@{lista.c}!ultimo@{ultimo}}
+\index{ultimo@{ultimo}!lista.c@{lista.c}}
+\doxysubsubsection{\texorpdfstring{ultimo()}{ultimo()}}
+{\footnotesize\ttfamily \label{lista_8c_aa42f5683271390ee9b59bc7f646a37d2} 
+\mbox{\hyperlink{structiterador}{iterador}} ultimo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lista}{Lista}} \texorpdfstring{$\ast$}{*}}]{l}{}\end{DoxyParamCaption})}
+
+
+
+Obtém o último elemento da lista. 
+
+Retorna um iterador para o último elemento da lista.
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & Ponteiro para a lista. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Iterador apontando para o último elemento da lista. 
+\end{DoxyReturn}

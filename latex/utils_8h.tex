@@ -1,0 +1,81 @@
+\doxysection{utils.\+h File Reference}
+\hypertarget{utils_8h}{}\label{utils_8h}\index{utils.h@{utils.h}}
+
+
+Descrições de preços, cardápio e struct pedido.  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_pedido}{Pedido}}
+\begin{DoxyCompactList}\small\item\em Estrutura que representa um pedido. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{utils_8h_ae0b4816fb45161ef9da5e6d6134ee28a}\label{utils_8h_ae0b4816fb45161ef9da5e6d6134ee28a} 
+\#define {\bfseries TAM}~1000
+\begin{DoxyCompactList}\small\item\em Tamanho máximo para a estrutura de dados. \end{DoxyCompactList}\item 
+\Hypertarget{utils_8h_a22c7f61c2f0fa6b1943548e838055cec}\label{utils_8h_a22c7f61c2f0fa6b1943548e838055cec} 
+\#define {\bfseries CHAR\+\_\+\+SIZE}~30
+\begin{DoxyCompactList}\small\item\em Tamanho máximo para o nome do cliente. \end{DoxyCompactList}\item 
+\Hypertarget{utils_8h_a76dabee871b242cc8983ac1a9098312b}\label{utils_8h_a76dabee871b242cc8983ac1a9098312b} 
+\#define {\bfseries NUM\+\_\+\+ITENS}~10
+\begin{DoxyCompactList}\small\item\em Quantidade total de itens disponíveis no cardápio. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{utils_8h_a76cbbf4f714382f5ee5890dacffa1c79}\label{utils_8h_a76cbbf4f714382f5ee5890dacffa1c79} 
+typedef struct Pedido \texorpdfstring{$\ast$}{*} {\bfseries Pedido}
+\begin{DoxyCompactList}\small\item\em Tipo que representa um ponteiro para a estrutura \doxylink{struct_pedido}{Pedido}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{utils_8h_a409e9d932ba25a6d8773c92b35a60812}{precos}} \mbox{[}\mbox{\hyperlink{utils_8h_a76dabee871b242cc8983ac1a9098312b}{NUM\+\_\+\+ITENS}}\mbox{]} = \{50, 110, 200, 70, 250, 1050, 600, 1500, 150, 1500\}
+\begin{DoxyCompactList}\small\item\em Array que contém os preços dos itens do cardápio. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{utils_8h_a88e1bb688f860d251c934488118f6c6a}{cardapio}} \mbox{[}\mbox{\hyperlink{utils_8h_a76dabee871b242cc8983ac1a9098312b}{NUM\+\_\+\+ITENS}}\mbox{]}\mbox{[}100\mbox{]}
+\begin{DoxyCompactList}\small\item\em Array que contém os nomes dos itens disponíveis no cardápio. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Descrições de preços, cardápio e struct pedido. 
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{utils_8h_a88e1bb688f860d251c934488118f6c6a}\index{utils.h@{utils.h}!cardapio@{cardapio}}
+\index{cardapio@{cardapio}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{cardapio}{cardapio}}
+{\footnotesize\ttfamily \label{utils_8h_a88e1bb688f860d251c934488118f6c6a} 
+char cardapio\mbox{[}\mbox{\hyperlink{utils_8h_a76dabee871b242cc8983ac1a9098312b}{NUM\+\_\+\+ITENS}}\mbox{]}\mbox{[}100\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}Creme\ Brûlée"{}},}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}Risoto\ de\ Aspargos\ e\ Limão\ Siciliano"{}},}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}Ravioli\ de\ Lagosta"{}},}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}Tartare\ de\ Salmão"{}},}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}Filet\ Mignon\ ao\ Molho\ Béarnaise"{}},}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}Trufas\ Negras"{}},}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}Caviar"{}},}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}Champagne\ Cristal\ 750ml"{}},}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}Martini\ Dry\ 750ml"{}},}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}Cognac\ Louis\ XIII\ 700ml"{}}\}}
+
+\end{DoxyCode}
+
+
+Array que contém os nomes dos itens disponíveis no cardápio. 
+
+Este array contém os nomes de 10 itens que podem ser pedidos pelos clientes. \Hypertarget{utils_8h_a409e9d932ba25a6d8773c92b35a60812}\index{utils.h@{utils.h}!precos@{precos}}
+\index{precos@{precos}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{precos}{precos}}
+{\footnotesize\ttfamily \label{utils_8h_a409e9d932ba25a6d8773c92b35a60812} 
+int precos\mbox{[}\mbox{\hyperlink{utils_8h_a76dabee871b242cc8983ac1a9098312b}{NUM\+\_\+\+ITENS}}\mbox{]} = \{50, 110, 200, 70, 250, 1050, 600, 1500, 150, 1500\}}
+
+
+
+Array que contém os preços dos itens do cardápio. 
+
+Os preços estão associados à ordem dos itens no cardápio. 

@@ -1,0 +1,65 @@
+\doxysection{lista.\+h}
+\hypertarget{lista_8h_source}{}\label{lista_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ LISTA\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ LISTA\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{void}\ *T;}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structnode}{node}}}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ T\ dado;}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structnode}{node}}\ *proximo,\ *anterior;}
+\DoxyCodeLine{00024\ \}\ Node;}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00035\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ Node\ *sentinela;}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{int}\ qntd,\ max;}
+\DoxyCodeLine{00038\ \}\ \mbox{\hyperlink{struct_lista}{Lista}};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00044\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structnode}{node}}\ *\mbox{\hyperlink{structiterador_a40817d90e5608e9f6c43969517f24460}{posicao}};\ }
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{struct_lista}{Lista}}\ *\mbox{\hyperlink{structiterador_adbbfbec9cb550190d7d28914247647a2}{estrutura}};\ \ \ \ \ }
+\DoxyCodeLine{00047\ \}\ \mbox{\hyperlink{structiterador}{iterador}};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \mbox{\hyperlink{struct_lista}{Lista}}\ *\mbox{\hyperlink{lista_8c_a283ad447ac37e8c76c246acae2425d03}{lista\_inicializar}}(\textcolor{keywordtype}{int}\ max);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00069\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{lista_8c_ad43d43c4fd8b7e95a5619631acbe665f}{lista\_vazia}}(\mbox{\hyperlink{struct_lista}{Lista}}\ *l);}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00079\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{lista_8c_a4206b815940fca78aeb41c9eb8887710}{lista\_cheia}}(\mbox{\hyperlink{struct_lista}{Lista}}\ *l);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00089\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{lista_8c_ac2e5acf9bd67a224999f459c1010c74e}{lista\_destruir}}(\mbox{\hyperlink{struct_lista}{Lista}}\ *l);}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00101\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{lista_8c_a57fd02945f3088cca0926623f5907e98}{removerInicio}}(\mbox{\hyperlink{struct_lista}{Lista}}\ *l);}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00113\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{lista_8c_ac2ca1c0bf29304382832e8234feaf465}{removerFim}}(\mbox{\hyperlink{struct_lista}{Lista}}\ *l);}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00126\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{lista_8c_af7d1fb59504723c54db3c2d03cd611a3}{inserirInicio}}(\mbox{\hyperlink{struct_lista}{Lista}}\ *l,\ T\ dado);}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00139\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{lista_8c_af842bd9b4ebf39cf91221598f3b12b91}{inserirFim}}(\mbox{\hyperlink{struct_lista}{Lista}}\ *l,\ T\ dado);}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00151\ T\ \mbox{\hyperlink{lista_8c_aa319facca241e1cb9ab562fcfff2fa47}{lista\_primeiroElemento}}(\mbox{\hyperlink{struct_lista}{Lista}}\ *l);}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00163\ T\ \mbox{\hyperlink{lista_8c_a42a8e85c35be50b92cdb03af00b103f8}{lista\_ultimoElemento}}(\mbox{\hyperlink{struct_lista}{Lista}}\ *l);}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00173\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{lista_8c_adf7cf2c3331f08ff0726a112659dcd21}{lista\_quantidade}}(\mbox{\hyperlink{struct_lista}{Lista}}\ *l);}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00181\ \mbox{\hyperlink{structiterador}{iterador}}\ \mbox{\hyperlink{lista_8c_a89175048a77d655736812e33e7cafc94}{primeiro}}(\mbox{\hyperlink{struct_lista}{Lista}}\ *l);}
+\DoxyCodeLine{00182\ }
+\DoxyCodeLine{00189\ \mbox{\hyperlink{structiterador}{iterador}}\ \mbox{\hyperlink{lista_8c_aa42f5683271390ee9b59bc7f646a37d2}{ultimo}}(\mbox{\hyperlink{struct_lista}{Lista}}\ *l);}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00196\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{lista_8c_adccf4c55749704780d25e68ff817854e}{proximo}}(\mbox{\hyperlink{structiterador}{iterador}}\ *i);}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00203\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{lista_8c_a71d022994985413726a84828f2bbc003}{anterior}}(\mbox{\hyperlink{structiterador}{iterador}}\ *i);}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00211\ T\ \mbox{\hyperlink{lista_8c_af85d81013144568c7ac1fe95f8759b50}{elemento}}(\mbox{\hyperlink{structiterador}{iterador}}\ i);}
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00219\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{lista_8c_a48a58bc5fa9d9b02ef517befcf1f4d27}{acabou}}(\mbox{\hyperlink{structiterador}{iterador}}\ i);}
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00221\ }
+\DoxyCodeLine{00222\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

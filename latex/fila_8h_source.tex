@@ -1,0 +1,40 @@
+\doxysection{fila.\+h}
+\hypertarget{fila_8h_source}{}\label{fila_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ FILA\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ FILA\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{void}\ *T;\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_fila_a147d2dab337001584b42f25acc83dbc4}{inicio}};\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_fila_a0bfa61e4420339260531a5a5cb22b4a2}{fim}};\ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_fila_a3e8d9549d46abcc81af8dd5075b28efc}{qntd}};\ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_fila_ac6eb08691b16c847e1f4cbe648b96431}{max}};\ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ T\ *\mbox{\hyperlink{struct_fila_a2227ca7229081d0cc243ad813d5d3613}{vetor}};\ \ \ }
+\DoxyCodeLine{00028\ \}\ \mbox{\hyperlink{struct_fila}{Fila}};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00038\ \mbox{\hyperlink{struct_fila}{Fila}}\ *\mbox{\hyperlink{fila_8c_a951dfc4a0270be5ec26c285a0a078479}{fila\_inicializar}}(\textcolor{keywordtype}{int}\ max);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{fila_8c_af0f95f0679da08a2527c3f7da75b34b8}{fila\_vazia}}(\mbox{\hyperlink{struct_fila}{Fila}}\ *f);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00059\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{fila_8c_aab64283d770e72fcbedd2d9f5497b61c}{fila\_cheia}}(\mbox{\hyperlink{struct_fila}{Fila}}\ *f);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00069\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fila_8c_af9b131fb6efec683a0dc68ea7040cb95}{fila\_destruir}}(\mbox{\hyperlink{struct_fila}{Fila}}\ *f);}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00082\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{fila_8c_af95366d29f4b584da8547c4c5a08ef2e}{inserir}}(\mbox{\hyperlink{struct_fila}{Fila}}\ *f,\ T\ dado);}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00094\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{fila_8c_a79f947cb2726b5772ada08365e62a090}{remover}}(\mbox{\hyperlink{struct_fila}{Fila}}\ *f);}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00105\ T\ \mbox{\hyperlink{fila_8c_a24068c029f7bf1a26c642301f719714a}{fila\_primeiroElemento}}(\mbox{\hyperlink{struct_fila}{Fila}}\ *f);}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00116\ T\ \mbox{\hyperlink{fila_8c_a9528b4ebba38c1f141e9a9e52fa76edb}{fila\_ultimoElemento}}(\mbox{\hyperlink{struct_fila}{Fila}}\ *f);}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00126\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{fila_8c_a3b3287979c1bd064af2aea7d87534be6}{fila\_quantidade}}(\mbox{\hyperlink{struct_fila}{Fila}}\ *f);}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00138\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fila_8c_a1e2d9f6102abfd8a1b0e718cbe6296fa}{imprimirFila}}(\mbox{\hyperlink{struct_fila}{Fila}}\ *f,\ \textcolor{keywordtype}{void}\ (*print)(T));\ \textcolor{comment}{//\ alterado\ de\ modo\ a\ permitir\ a\ impressão\ de\ dados\ de\ qualquer\ tipo}}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

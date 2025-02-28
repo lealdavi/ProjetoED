@@ -1,0 +1,253 @@
+\doxysection{fila.\+c File Reference}
+\hypertarget{fila_8c}{}\label{fila_8c}\index{fila.c@{fila.c}}
+
+
+Implementação de uma fila com alocacao dinamica e sequencial.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include "{}fila.\+h"{}}\newline
+Include dependency graph for fila.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_fila}{Fila}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{fila_8c_a951dfc4a0270be5ec26c285a0a078479}{fila\+\_\+inicializar}} (int max)
+\begin{DoxyCompactList}\small\item\em Inicializa os índices e retorna um ponteiro para a fila. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{fila_8c_af0f95f0679da08a2527c3f7da75b34b8}{fila\+\_\+vazia}} (\mbox{\hyperlink{struct_fila}{Fila}} \texorpdfstring{$\ast$}{*}f)
+\begin{DoxyCompactList}\small\item\em Verifica se a fila está vazia. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{fila_8c_aab64283d770e72fcbedd2d9f5497b61c}{fila\+\_\+cheia}} (\mbox{\hyperlink{struct_fila}{Fila}} \texorpdfstring{$\ast$}{*}f)
+\begin{DoxyCompactList}\small\item\em Verifica se a fila está cheia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fila_8c_af9b131fb6efec683a0dc68ea7040cb95}{fila\+\_\+destruir}} (\mbox{\hyperlink{struct_fila}{Fila}} \texorpdfstring{$\ast$}{*}f)
+\begin{DoxyCompactList}\small\item\em Libera a memória ocupada pela fila. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{fila_8c_af95366d29f4b584da8547c4c5a08ef2e}{inserir}} (\mbox{\hyperlink{struct_fila}{Fila}} \texorpdfstring{$\ast$}{*}f, T dado)
+\begin{DoxyCompactList}\small\item\em Insere um dado no fim da fila. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{fila_8c_a79f947cb2726b5772ada08365e62a090}{remover}} (\mbox{\hyperlink{struct_fila}{Fila}} \texorpdfstring{$\ast$}{*}f)
+\begin{DoxyCompactList}\small\item\em Remove o primeiro elemento da fila. \end{DoxyCompactList}\item 
+T \mbox{\hyperlink{fila_8c_a24068c029f7bf1a26c642301f719714a}{fila\+\_\+primeiro\+Elemento}} (\mbox{\hyperlink{struct_fila}{Fila}} \texorpdfstring{$\ast$}{*}f)
+\begin{DoxyCompactList}\small\item\em Retorna o primeiro elemento da fila. \end{DoxyCompactList}\item 
+T \mbox{\hyperlink{fila_8c_a9528b4ebba38c1f141e9a9e52fa76edb}{fila\+\_\+ultimo\+Elemento}} (\mbox{\hyperlink{struct_fila}{Fila}} \texorpdfstring{$\ast$}{*}f)
+\begin{DoxyCompactList}\small\item\em Retorna o último elemento da fila. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{fila_8c_a3b3287979c1bd064af2aea7d87534be6}{fila\+\_\+quantidade}} (\mbox{\hyperlink{struct_fila}{Fila}} \texorpdfstring{$\ast$}{*}f)
+\begin{DoxyCompactList}\small\item\em Retorna a quantidade de elementos na fila. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fila_8c_a1e2d9f6102abfd8a1b0e718cbe6296fa}{imprimir\+Fila}} (\mbox{\hyperlink{struct_fila}{Fila}} \texorpdfstring{$\ast$}{*}f, void(\texorpdfstring{$\ast$}{*}print)(T))
+\begin{DoxyCompactList}\small\item\em Imprime os elementos da fila. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementação de uma fila com alocacao dinamica e sequencial. 
+
+Este arquivo contém as funções necessárias para manipular uma fila sequencial, incluindo inserções, remoções e acesso aos elementos. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{fila_8c_aab64283d770e72fcbedd2d9f5497b61c}\index{fila.c@{fila.c}!fila\_cheia@{fila\_cheia}}
+\index{fila\_cheia@{fila\_cheia}!fila.c@{fila.c}}
+\doxysubsubsection{\texorpdfstring{fila\_cheia()}{fila\_cheia()}}
+{\footnotesize\ttfamily \label{fila_8c_aab64283d770e72fcbedd2d9f5497b61c} 
+int fila\+\_\+cheia (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_fila}{Fila}} \texorpdfstring{$\ast$}{*}}]{f}{}\end{DoxyParamCaption})}
+
+
+
+Verifica se a fila está cheia. 
+
+Esta função retorna 1 se a quantidade atual de elementos for igual à capacidade máxima da fila.
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Ponteiro para a fila. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Retorna 1 se a fila estiver cheia, 0 caso contrário. 
+\end{DoxyReturn}
+\Hypertarget{fila_8c_af9b131fb6efec683a0dc68ea7040cb95}\index{fila.c@{fila.c}!fila\_destruir@{fila\_destruir}}
+\index{fila\_destruir@{fila\_destruir}!fila.c@{fila.c}}
+\doxysubsubsection{\texorpdfstring{fila\_destruir()}{fila\_destruir()}}
+{\footnotesize\ttfamily \label{fila_8c_af9b131fb6efec683a0dc68ea7040cb95} 
+void fila\+\_\+destruir (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_fila}{Fila}} \texorpdfstring{$\ast$}{*}}]{f}{}\end{DoxyParamCaption})}
+
+
+
+Libera a memória ocupada pela fila. 
+
+Verifica se a fila está cheia.
+
+Esta função desaloca o vetor de elementos da fila e a estrutura da fila.
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Ponteiro para a fila a ser destruída. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{fila_8c_a951dfc4a0270be5ec26c285a0a078479}\index{fila.c@{fila.c}!fila\_inicializar@{fila\_inicializar}}
+\index{fila\_inicializar@{fila\_inicializar}!fila.c@{fila.c}}
+\doxysubsubsection{\texorpdfstring{fila\_inicializar()}{fila\_inicializar()}}
+{\footnotesize\ttfamily \label{fila_8c_a951dfc4a0270be5ec26c285a0a078479} 
+\mbox{\hyperlink{struct_fila}{Fila}} \texorpdfstring{$\ast$}{*} fila\+\_\+inicializar (\begin{DoxyParamCaption}\item[{int}]{max}{}\end{DoxyParamCaption})}
+
+
+
+Inicializa os índices e retorna um ponteiro para a fila. 
+
+Inicializa uma nova fila com um limite máximo de elementos.
+
+Esta função aloca memória para a fila e inicializa seus índices, quantidade de elementos e vetor para armazenar os dados.
+
+
+\begin{DoxyParams}{Parameters}
+{\em max} & Limite máximo de elementos que a fila pode armazenar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Fila\texorpdfstring{$\ast$}{*} Ponteiro para a fila inicializada, ou NULL em caso de falha. 
+\end{DoxyReturn}
+\Hypertarget{fila_8c_a24068c029f7bf1a26c642301f719714a}\index{fila.c@{fila.c}!fila\_primeiroElemento@{fila\_primeiroElemento}}
+\index{fila\_primeiroElemento@{fila\_primeiroElemento}!fila.c@{fila.c}}
+\doxysubsubsection{\texorpdfstring{fila\_primeiroElemento()}{fila\_primeiroElemento()}}
+{\footnotesize\ttfamily \label{fila_8c_a24068c029f7bf1a26c642301f719714a} 
+T fila\+\_\+primeiro\+Elemento (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_fila}{Fila}} \texorpdfstring{$\ast$}{*}}]{f}{}\end{DoxyParamCaption})}
+
+
+
+Retorna o primeiro elemento da fila. 
+
+Esta função retorna o dado armazenado no primeiro elemento da fila.
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Ponteiro para a fila. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T O valor armazenado no primeiro elemento da fila. 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+Se a fila estiver vazia, o comportamento é indefinido. 
+\end{DoxyWarning}
+\Hypertarget{fila_8c_a3b3287979c1bd064af2aea7d87534be6}\index{fila.c@{fila.c}!fila\_quantidade@{fila\_quantidade}}
+\index{fila\_quantidade@{fila\_quantidade}!fila.c@{fila.c}}
+\doxysubsubsection{\texorpdfstring{fila\_quantidade()}{fila\_quantidade()}}
+{\footnotesize\ttfamily \label{fila_8c_a3b3287979c1bd064af2aea7d87534be6} 
+int fila\+\_\+quantidade (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_fila}{Fila}} \texorpdfstring{$\ast$}{*}}]{f}{}\end{DoxyParamCaption})}
+
+
+
+Retorna a quantidade de elementos na fila. 
+
+Esta função retorna o número de elementos atualmente armazenados na fila.
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Ponteiro para a fila. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int A quantidade de elementos na fila. 
+\end{DoxyReturn}
+\Hypertarget{fila_8c_a9528b4ebba38c1f141e9a9e52fa76edb}\index{fila.c@{fila.c}!fila\_ultimoElemento@{fila\_ultimoElemento}}
+\index{fila\_ultimoElemento@{fila\_ultimoElemento}!fila.c@{fila.c}}
+\doxysubsubsection{\texorpdfstring{fila\_ultimoElemento()}{fila\_ultimoElemento()}}
+{\footnotesize\ttfamily \label{fila_8c_a9528b4ebba38c1f141e9a9e52fa76edb} 
+T fila\+\_\+ultimo\+Elemento (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_fila}{Fila}} \texorpdfstring{$\ast$}{*}}]{f}{}\end{DoxyParamCaption})}
+
+
+
+Retorna o último elemento da fila. 
+
+Esta função retorna o dado armazenado no último elemento da fila.
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Ponteiro para a fila. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T O valor armazenado no último elemento da fila. 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+Se a fila estiver vazia, o comportamento é indefinido. 
+\end{DoxyWarning}
+\Hypertarget{fila_8c_af0f95f0679da08a2527c3f7da75b34b8}\index{fila.c@{fila.c}!fila\_vazia@{fila\_vazia}}
+\index{fila\_vazia@{fila\_vazia}!fila.c@{fila.c}}
+\doxysubsubsection{\texorpdfstring{fila\_vazia()}{fila\_vazia()}}
+{\footnotesize\ttfamily \label{fila_8c_af0f95f0679da08a2527c3f7da75b34b8} 
+int fila\+\_\+vazia (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_fila}{Fila}} \texorpdfstring{$\ast$}{*}}]{f}{}\end{DoxyParamCaption})}
+
+
+
+Verifica se a fila está vazia. 
+
+Esta função retorna 1 se a quantidade atual de elementos for 0, indicando que a fila está vazia.
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Ponteiro para a fila. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Retorna 1 se a fila estiver vazia, 0 caso contrário. 
+\end{DoxyReturn}
+\Hypertarget{fila_8c_a1e2d9f6102abfd8a1b0e718cbe6296fa}\index{fila.c@{fila.c}!imprimirFila@{imprimirFila}}
+\index{imprimirFila@{imprimirFila}!fila.c@{fila.c}}
+\doxysubsubsection{\texorpdfstring{imprimirFila()}{imprimirFila()}}
+{\footnotesize\ttfamily \label{fila_8c_a1e2d9f6102abfd8a1b0e718cbe6296fa} 
+void imprimir\+Fila (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_fila}{Fila}} \texorpdfstring{$\ast$}{*}}]{f}{, }\item[{void(\texorpdfstring{$\ast$}{*}}]{print~}{)(T)}\end{DoxyParamCaption})}
+
+
+
+Imprime os elementos da fila. 
+
+Esta função itera sobre os elementos da fila e chama uma função de impressão fornecida para cada elemento. Os elementos são impressos na ordem em que aparecem na fila.
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Ponteiro para a fila. \\
+\hline
+{\em print} & Ponteiro para a função de impressão que aceita um argumento do tipo T. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{fila_8c_af95366d29f4b584da8547c4c5a08ef2e}\index{fila.c@{fila.c}!inserir@{inserir}}
+\index{inserir@{inserir}!fila.c@{fila.c}}
+\doxysubsubsection{\texorpdfstring{inserir()}{inserir()}}
+{\footnotesize\ttfamily \label{fila_8c_af95366d29f4b584da8547c4c5a08ef2e} 
+int inserir (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_fila}{Fila}} \texorpdfstring{$\ast$}{*}}]{f}{, }\item[{T}]{dado}{}\end{DoxyParamCaption})}
+
+
+
+Insere um dado no fim da fila. 
+
+Insere um elemento na fila.
+
+Esta função adiciona um novo elemento ao final da fila. Se a fila estiver cheia, a função retorna 0 e a inserção não é realizada. Caso contrário, o elemento é inserido e a função retorna 1.
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Ponteiro para a fila. \\
+\hline
+{\em dado} & Valor a ser inserido na fila. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Retorna 1 se a inserção for bem-\/sucedida, 0 se a fila estiver cheia. 
+\end{DoxyReturn}
+\Hypertarget{fila_8c_a79f947cb2726b5772ada08365e62a090}\index{fila.c@{fila.c}!remover@{remover}}
+\index{remover@{remover}!fila.c@{fila.c}}
+\doxysubsubsection{\texorpdfstring{remover()}{remover()}}
+{\footnotesize\ttfamily \label{fila_8c_a79f947cb2726b5772ada08365e62a090} 
+int remover (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_fila}{Fila}} \texorpdfstring{$\ast$}{*}}]{f}{}\end{DoxyParamCaption})}
+
+
+
+Remove o primeiro elemento da fila. 
+
+Esta função remove o primeiro elemento da fila. Se a fila estiver vazia, a função retorna 0 e nenhuma remoção é feita. Caso contrário, o primeiro elemento é removido e a função retorna 1.
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Ponteiro para a fila. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Retorna 1 se a remoção foi bem-\/sucedida, 0 se a fila estiver vazia. 
+\end{DoxyReturn}

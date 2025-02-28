@@ -188,10 +188,10 @@ int inserirFim(Lista *l, T dado)
  * 
  * Esta função retorna o dado armazenado no primeiro elemento da lista,
  * ou seja, no nó imediatamente após o nó sentinela.
+ * Não pode ser chamada se a lista estiver vazia.
  * 
  * @param l Ponteiro para a lista.
  * @return T O valor armazenado no primeiro nó da lista.
- * @warning Se a lista estiver vazia, o comportamento é indefinido.
  */
 T lista_primeiroElemento(Lista *l)
 {
@@ -203,10 +203,10 @@ T lista_primeiroElemento(Lista *l)
  * 
  * Esta função retorna o dado armazenado no último elemento da lista,
  * ou seja, no nó imediatamente antes do nó sentinela.
+ * Não pode ser chamada se a lista estiver vazia.
  * 
  * @param l Ponteiro para a lista.
  * @return T O valor armazenado no último nó da lista.
- * @warning Se a lista estiver vazia, o comportamento é indefinido.
  */
 T lista_ultimoElemento(Lista *l)
 {
