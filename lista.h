@@ -37,10 +37,13 @@ typedef struct
     int qntd, max;
 } Lista;
 
+/**
+ * @brief Estrutura que representa um iterador para percorrer a lista.
+ */
 typedef struct
 {
-    struct node *posicao;
-    Lista *estrutura;
+    struct node *posicao; /**< Ponteiro para a posição atual do iterador na lista. */
+    Lista *estrutura;     /**< Ponteiro para a lista associada ao iterador. */
 } iterador;
 
 /**
@@ -169,11 +172,50 @@ T lista_ultimoElemento(Lista *l);
  */
 int lista_quantidade(Lista *l);
 
+/**
+ * @brief Retorna um iterador para o primeiro elemento da lista.
+ * 
+ * @param l Ponteiro para a lista.
+ * @return Iterador apontando para o primeiro elemento da lista.
+ */
 iterador primeiro(Lista *l);
+
+/**
+ * @brief Retorna um iterador para o último elemento da lista.
+ * 
+ * @param l Ponteiro para a lista.
+ * @return Iterador apontando para o último elemento da lista.
+ */
 iterador ultimo(Lista *l);
+
+/**
+ * @brief Avança o iterador para o próximo elemento da lista.
+ * 
+ * @param i Ponteiro para o iterador.
+ */
 void proximo(iterador *i);
+
+/**
+ * @brief Retrocede o iterador para o elemento anterior da lista.
+ * 
+ * @param i Ponteiro para o iterador.
+ */
 void anterior(iterador *i);
+
+/**
+ * @brief Retorna o elemento atual apontado pelo iterador.
+ * 
+ * @param i Iterador.
+ * @return Elemento do tipo T armazenado na posição atual do iterador.
+ */
 T elemento(iterador i);
+
+/**
+ * @brief Verifica se o iterador chegou ao final da lista.
+ * 
+ * @param i Iterador.
+ * @return 1 se o iterador está no final da lista, 0 caso contrário.
+ */
 int acabou(iterador i);
 
 

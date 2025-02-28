@@ -53,6 +53,7 @@ int precos[NUM_ITENS] = {50, 110, 200, 70, 250, 1050, 600, 1500, 150, 1500};
  * @brief Array que contém os nomes dos itens disponíveis no cardápio.
  * 
  * Este array contém os nomes de 10 itens que podem ser pedidos pelos clientes.
+
  */
 char cardapio[NUM_ITENS][100] = {
     "Creme Brûlée",
@@ -65,5 +66,7 @@ char cardapio[NUM_ITENS][100] = {
     "Champagne Cristal 750ml",
     "Martini Dry 750ml",
     "Cognac Louis XIII 700ml"};
+
+
 
 #endif

@@ -57,7 +57,7 @@ void listar_espera(Fila *fila, void(*imprimirDados));
  * @param historico Ponteiro para a lista de histórico de pedidos.
  * @param imprimirDados Ponteiro para a função que imprime os dados dos pedidos.
  */
-void listar_historico(Lista *historico, void(*imprimirDados));
+void listar_historico(Lista *historico);
 
 /**
  * @brief Função que imprime os dados de um pedido.
@@ -68,7 +68,6 @@ void listar_historico(Lista *historico, void(*imprimirDados));
  * @param p Ponteiro para o pedido a ser impresso.
  */
 void imprimirDados(void *p);
-void imprimirIterador(Lista *historico);
 
 /**
  * @brief Função principal do programa.
@@ -78,6 +77,16 @@ void imprimirIterador(Lista *historico);
  * 
  * @return int Retorna 0 ao final da execução do programa.
  */
+
+/**
+ * @brief Imprime os elementos da lista na ordem do iterador.
+ *
+ * @param historico Ponteiro para a lista que será iterada e impressa.
+ */
+void imprimirIterador(Lista *historico);
+
+int precoTotal(Lista *historico);
+
 int main()
 {
     Fila *fila;                      ///< Ponteiro para a fila de pedidos.
@@ -141,8 +150,8 @@ void selecionar_operacao(Fila *fila, Lista *historico, Pedido *pedido, void(*imp
             listar_espera(fila, imprimirDados);
             break;
         case 4:
-            imprimirIterador(historico);
-            // listar_historico(historico, imprimirDados);
+            //imprimirIterador(historico);
+            listar_historico(historico);
             break;
         case 5:
             fila_destruir(fila);
@@ -276,7 +285,7 @@ void listar_espera(Fila *fila, void(*imprimirDados))
  * @param historico Ponteiro para a lista que contém os pedidos do histórico.
  * @param imprimirDados Ponteiro para a função que será utilizada para imprimir os dados dos pedidos.
  */
-void listar_historico(Lista *historico, void(*imprimirDados))
+void listar_historico(Lista *historico)
 {
     if (lista_vazia(historico))
     {
@@ -285,7 +294,8 @@ void listar_historico(Lista *historico, void(*imprimirDados))
     }
     printf("Histórico de pedidos:\n");
     printf("| %-*s | %-*s | %-*s | %-*s |\n", 20, "Pedido", 13, "Preço", 30, "Cliente", 10, "Mesa");
-    imprimirLista(historico, imprimirDados);
+    imprimirIterador(historico);
+    printf("\nPreço Total: R$%d\n", precoTotal(historico));
 }
 
 /**
@@ -312,4 +322,18 @@ void imprimirIterador(Lista *historico)
         printf("| %-*s | R$%-*d | %-*s | %-*d |\n", 20, cardapio[pedido->id], 10, pedido->preco, 30, pedido->cliente, 10, pedido->mesa);
         proximo(&it);
     }
+}
+
+int precoTotal (Lista *historico) 
+{
+    int preco = 0;
+    iterador it = primeiro(historico);
+    while (!acabou(it))
+    {
+        Pedido pedido = (Pedido)elemento(it);
+        preco += pedido->preco;
+        proximo(&it);
+    }
+
+    return preco;
 }
